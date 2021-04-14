@@ -21,4 +21,5 @@ const signUp = async (email, displayName, password) => {
 }
 
 const useSignUp = () => {return {error, signUp}}
-export {useSignUp}
+
+export default useSignUp

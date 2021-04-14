@@ -61,7 +61,7 @@
 
 <script>
 import { ref } from 'vue'
-import { useSignUp } from '@/composables/UseSignUp'
+import useSignUp from '@/composables/UseSignUp'
 import {useRouter} from "vue-router";
 export default {
   name: "SignUp",
@@ -69,7 +69,7 @@ export default {
     const displayName = ref('')
     const email = ref('')
     const password = ref('')
-  const router = useRouter()
+    const router = useRouter()
     const { signUp, error } = useSignUp()
 
     const handleSubmit = async () => {

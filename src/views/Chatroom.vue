@@ -1,15 +1,15 @@
 <template>
   <div>
-    room
+    <ChatroomNav/>
   </div>
 </template>
 
 <script>
+import ChatroomNav from "@/components/ChatroomNav";
 export default {
-  name: "Chatroom"
+  name: "Chatroom",
+  components: {
+    ChatroomNav
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
