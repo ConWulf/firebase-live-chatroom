@@ -1,7 +1,9 @@
 <template>
-  <div v-if="user">
-    <p>{{ user.displayName }}</p>
-    <p>{{ user.email }}</p>
+  <div v-if="user" class="w-5/6 px-4 py-2 bg-gray-50 mx-auto border-b rounded-t-xl text-center shadow-md flex">
+    <div class="flex-grow text-left">
+      <p>{{ user.displayName }}</p>
+      <p>{{ user.email }}</p>
+    </div>
     <button @click="logoutUser">Logout</button>
   </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="w-5/6 px-4 py-2 bg-gray-50 mx-auto max-h-96 overflow-y-auto text-center shadow-md flex">
     <div v-if="error">{{ error }}</div>
-    <div v-if="docs">
-      <div v-for="doc in formattedDocs" :key="doc.id">
-        <span>{{ doc.createdAt }}</span>
-        <span>{{ doc.name }}</span>
+    <div v-if="docs" class="space-y-1.5">
+      <div v-for="doc in formattedDocs" :key="doc.id" class="p-1 text-md text-left">
+        <span class="block text-sm">{{ doc.createdAt }}</span>
+        <span class="font-bold mr-2">{{ doc.name }}</span>
         <span>{{ doc.message }}</span>
       </div>
     </div>

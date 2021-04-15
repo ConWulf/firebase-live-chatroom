@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="submitMessage">
-    <textarea placeholder="Message" v-model="message" @keypress.enter.prevent="submitMessage"></textarea>
+  <form @submit.prevent="submitMessage" class="w-5/6 px-4 py-2 bg-gray-50 mx-auto rounded-b-xl text-center shadow-md flex border-t">
+    <textarea placeholder="Message" v-model="message" @keypress.enter.prevent="submitMessage" class="resize-none w-full p-1"></textarea>
     <div>{{ error }}</div>
   </form>
 </template>
