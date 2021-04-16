@@ -1,4 +1,4 @@
-import {ref} from "vue"
+import {ref, watchEffect} from "vue"
 import {projectFirestore} from "@/firebase/config"
 
 const getCollection = (collection) => {
@@ -9,7 +9,7 @@ const getCollection = (collection) => {
         .collection(collection)
         .orderBy('createdAt')
 
-    collectionRef.onSnapshot( snapshot => {
+    const col = collectionRef.onSnapshot( snapshot => {
         let docBucket = []
         snapshot.docs.forEach(doc => {
             doc.data().createdAt && docBucket.push({...doc.data(), id: doc.id})
@@ -20,6 +20,11 @@ const getCollection = (collection) => {
         error.value = 'could not get messages'
         docs.value = null
     })
+
+    watchEffect(onInvalidate => {
+        onInvalidate(() => col())
+    })
+
     return { error, docs }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-5/6 px-4 py-2 bg-gray-50 mx-auto max-h-96 overflow-y-auto text-center shadow-md flex">
+  <div ref="chatWindow" class="w-5/6 px-4 py-2 bg-gray-50 mx-auto max-h-96 overflow-y-auto text-center shadow-md flex">
     <div v-if="error">{{ error }}</div>
     <div v-if="docs" class="space-y-1.5">
       <div v-for="doc in formattedDocs" :key="doc.id" class="p-1 text-md text-left">
@@ -12,14 +12,20 @@
 </template>
 
 <script>
-import getCollection from "@/composables/GetCollection";
+import getCollection from "@/composables/GetCollection"
 import { formatDistanceToNow } from 'date-fns'
-import {computed} from "vue";
+import {computed, onUpdated} from "vue"
+import { ref } from 'vue'
 export default {
   name: "ChatWindow",
   setup() {
     const {error, docs} = getCollection('messages')
-
+    //auto scroll to bottom of messages
+    const chatWindow = ref(null)
+    onUpdated(() => {
+      chatWindow.value.scrollTop = chatWindow.value.scrollHeight
+    })
+    //format time
     // eslint-disable-next-line vue/return-in-computed-property
     const formattedDocs = computed(() => {
       if (docs.value) {
@@ -30,7 +36,7 @@ export default {
       }
     })
 
-    return { error, docs, formattedDocs }
+    return { error, docs, formattedDocs, chatWindow }
   }
 }
 </script>
