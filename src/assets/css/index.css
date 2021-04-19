@@ -6,4 +6,7 @@
     body, html {
         @apply w-screen h-screen overflow-x-hidden bg-purple-300
     }
+    #app {
+        @apply h-full flex flex-wrap items-start
+    }
 }
