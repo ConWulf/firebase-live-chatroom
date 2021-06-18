@@ -52,6 +52,7 @@
             Sign in
           </button>
         </div>
+        <button @click.prevent="handleGoogleSignUp">Sign Ip With Google</button>
       </form>
     </div>
   </div>
@@ -60,6 +61,7 @@
 <script>
 import {ref} from "vue";
 import useLogin from "@/composables/UseLogin";
+import googleSignUp from "@/composables/SignUpWithGoogle";
 
 export default {
   name: "Login",
@@ -74,7 +76,11 @@ export default {
         context.emit('login')
     }
 
-    return { email, password, handleSubmit, error }
+    const handleGoogleSignUp = async () => {
+      await googleSignUp()
+    }
+
+    return { email, password, handleSubmit, error, handleGoogleSignUp }
 
   }
 }
